@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anjan Krishna | Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --text-main: #020617;
+      --text-muted: #6b7280;
+      --card: rgba(248,250,252,0.96);
+      --font-sans: "Inter", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at 0% 0%, #f97316 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #6366f1 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #ec4899 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #fefce8 0, #e0f2fe 40%, #f9fafb 100%);
+      padding: 24px 32px 28px;
+    }
+
+    .page-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .title-group h1 {
+      margin: 0;
+      font-size: 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .title-group p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(255,255,255,0.9);
+      padding: 7px 13px;
+      font-size: 13px;
+      text-decoration: none;
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.14s;
+    }
+
+    .nav-link.primary {
+      background: #111827;
+      color: #f9fafb;
+      border-color: #020617;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 20px rgba(51,65,85,0.28);
+      background: #eef2ff;
+      border-color: #6366f1;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .page { padding: 16px 14px 18px; }
+      main { grid-template-columns: 1fr; }
+    }
+
+    .projects-intro {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 14px 16px;
+      border: 1px solid rgba(148,163,184,0.6);
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .projects-intro strong { color: #111827; }
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-card {
+      border-radius: 18px;
+      padding: 10px 12px;
+      background: #f9fafb;
+      border: 1px solid rgba(148,163,184,0.7);
+      box-shadow: 0 12px 26px rgba(15,23,42,0.20);
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4c1d95;
+      white-space: nowrap;
+    }
+
+    .project-tech {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      line-height: 1.55;
+    }
+
+    .side-panel {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 12px;
+      color: var(--text-muted);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.18);
+    }
+
+    .side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="page-inner">
+
+      <header>
+        <div class="title-group">
+          <h1>🚀 Projects</h1>
+          <p>Some ML, CV, NLP, data science, and pipeline work I’ve built to learn by doing.</p>
+        </div>
+
+        <nav>
+          <a class="nav-link" href="index.html"><span class="icon">🏠</span> Home</a>
+          <a class="nav-link" href="education.html"><span class="icon">🎓</span> Education</a>
+          <a class="nav-link" href="experience.html"><span class="icon">💼</span> Experience</a>
+          <a class="nav-link primary" href="projects.html"><span class="icon">🚀</span> Projects</a>
+          <a class="nav-link" href="notes.html"><span class="icon">📝</span> Notes</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- LEFT COLUMN: PROJECTS -->
+        <div>
+          <div class="projects-intro">
+            A mix of <strong>vision</strong>, <strong>NLP</strong>, <strong>LLMs</strong>, and
+            <strong>data-focused</strong> projects. None of these are “perfect products” — they’re
+            experiments that helped me understand how things behave beyond neat notebooks.
+          </div>
+
+          <div class="projects-list">
+            <!-- 1: Pneumonia -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Pneumonia Detection from Chest X-Rays</div>
+                <div class="project-tag">Medical Imaging · VGG-19</div>
+              </div>
+              <div class="project-tech">Python · TensorFlow · Keras · CNN · Transfer Learning</div>
+              <div class="project-desc">
+                I worked on a simple but meaningful project where the goal was to classify chest X-ray images as
+                “pneumonia” or “normal.” Instead of training a model from scratch, I used VGG-19 as a starting point
+                and adapted it through transfer learning. Most of the time went into cleaning the dataset, resizing and
+                normalizing images, and making sure the train/validation split wasn’t leaking information. I also tried
+                basic augmentations to help the model generalize better on a relatively small dataset. The focus wasn’t
+                on building a state-of-the-art medical model, but on learning how CNNs behave on real data.
+              </div>
+            </div>
+
+            <!-- 2: Toxic Comment Detection -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Toxic Comment Detection with BERT</div>
+                <div class="project-tag">NLP · BERT</div>
+              </div>
+              <div class="project-tech">Python · PyTorch · Hugging Face · Streamlit</div>
+              <div class="project-desc">
+                This project came from my curiosity about how transformers handle messy text from real users. I used a
+                BERT-based model to classify comments into multiple toxicity labels. A lot of the work was on the
+                data side: cleaning the text, dealing with class imbalance, and deciding which preprocessing steps were
+                actually helpful. I experimented with different learning rates and batch sizes during fine-tuning and
+                used Hugging Face tools to keep the training process manageable. I then built a small Streamlit app
+                where you can type a comment and see what the model thinks. It’s not a production system, but it gave
+                me a good feel for debugging training runs and understanding where the model struggles.
+              </div>
+            </div>
+
+            <!-- 3: YOLO + SAM -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">YOLO + SAM: Detection & Segmentation Experiments</div>
+                <div class="project-tag">Computer Vision</div>
+              </div>
+              <div class="project-tech">Python · YOLO · SAM · PyTorch</div>
+              <div class="project-desc">
+                This project started from a simple question: “What happens if I combine a detector and a modern
+                segmentation model?” I trained YOLO on a small custom dataset and then used its bounding boxes as input
+                to SAM to generate segmentation masks. A surprising amount of time went into fixing annotation issues
+                and checking label quality. Once things were stable, I compared how different YOLO variants performed
+                and watched how SAM handled off-center, low-light, or partially cropped objects. It wasn’t meant to be
+                a polished product — just a way to build intuition around modern vision models.
+              </div>
+            </div>
+
+            <!-- 4: Visual Search -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Visual Search System (Embedding-based Retrieval)</div>
+                <div class="project-tag">Similarity Search</div>
+              </div>
+              <div class="project-tech">Python · CLIP-style Embeddings · Vector DB · Simple UI</div>
+              <div class="project-desc">
+                I built a small visual search system where a user can upload an image and get back similar images from a
+                dataset. Instead of predicting labels, the system uses pre-trained encoders (similar to CLIP) to turn
+                each image into an embedding and stores them in a vector database. I tried out different similarity
+                metrics, like cosine similarity, to see how they changed the results. I also created a simple UI to
+                visualize the top matches. The system isn’t perfect — sometimes the “similar” images feel a bit off —
+                but that’s exactly what helped me understand how visual embeddings behave.
+              </div>
+            </div>
+
+            <!-- 5: RAG -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Small Retrieval-Augmented Generation (RAG) System</div>
+                <div class="project-tag">LLMs · RAG</div>
+              </div>
+              <div class="project-tech">Python · Embeddings · Vector DB · LLM API</div>
+              <div class="project-desc">
+                This project was my first attempt at building a simple RAG pipeline. I took a small collection of PDFs
+                and text files, split them into chunks, and generated embeddings with a sentence transformer. The
+                embeddings went into a vector database, and on each user query I retrieved the top relevant chunks and
+                passed them along with the question to an LLM. Most of the learning came from trial-and-error with chunk
+                size, prompt structure, and handling cases where the retrieved text wasn’t actually helpful. It’s a
+                small system, but it helped me understand how retrieval and generation fit together.
+              </div>
+            </div>
+
+            <!-- 6: End-to-End ML Project -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">End-to-End ML Pipeline for Tabular Data</div>
+                <div class="project-tag">End-to-End · MLOps</div>
+              </div>
+              <div class="project-tech">Python · scikit-learn · MLflow · Docker</div>
+              <div class="project-desc">
+                I wanted one project where I touched almost every part of the ML lifecycle on a tabular problem, from
+                data loading to a simple deployed service. I started with a structured dataset, built a small pipeline
+                for preprocessing (handling missing values, encoding categories, scaling features), and then trained a
+                few baseline models like logistic regression and gradient boosting. I tracked experiments with MLflow,
+                logged metrics and parameters, and compared runs instead of just relying on memory. At the end, I
+                wrapped the best model in a small API and containerized it with Docker. The project isn’t flashy, but it
+                helped me understand the boring but important parts of shipping a model end-to-end.
+              </div>
+            </div>
+
+            <!-- 7: Data Science Project -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Data Science Case Study on User Behaviour</div>
+                <div class="project-tag">Data Science</div>
+              </div>
+              <div class="project-tech">Python · Pandas · Matplotlib/Seaborn · Simple Models</div>
+              <div class="project-desc">
+                In this project, I treated a public dataset like a small “data science case study.” I explored how users
+                interacted with a product over time, looking at basic things like retention, activity patterns, and the
+                difference between engaged and non-engaged users. I used Pandas for feature engineering and built simple
+                models (logistic regression and tree-based methods) to see whether I could predict a target such as
+                churn or conversion. The focus was less on squeezing every last percent of accuracy and more on asking
+                reasonable questions, visualizing patterns, and making sure the conclusions actually matched what the
+                data was saying.
+              </div>
+            </div>
+
+            <!-- 8: Data Engineering Process -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Batch Data Pipeline for Analytics</div>
+                <div class="project-tag">Data Engineering</div>
+              </div>
+              <div class="project-tech">Python · SQL · Spark · Airflow</div>
+              <div class="project-desc">
+                For this project, I focused on the data engineering side instead of the model. I built a simple batch
+                pipeline that pulled raw data from a source, cleaned it, transformed it into a more analytics-friendly
+                format, and stored it so that downstream tasks (like dashboards or training scripts) could use it. I
+                used Python and Spark for transformations, SQL for sanity checks, and a basic Airflow DAG to schedule
+                the pipeline. The result was a small but real example of how much effort goes into getting reliable data
+                in place before any modeling happens.
+              </div>
+            </div>
+
+            <!-- 9: EDA Project -->
+            <div class="project-card">
+              <div class="project-title-row">
+                <div class="project-title">Exploratory Data Analysis on a Real-World Dataset</div>
+                <div class="project-tag">EDA</div>
+              </div>
+              <div class="project-tech">Python · Pandas · Matplotlib · Jupyter</div>
+              <div class="project-desc">
+                This project was mostly about slowing down and just listening to the data. I picked a real-world dataset
+                and spent time on unglamorous tasks: checking distributions, spotting outliers, looking at correlations,
+                and slicing the data into different groups to see how behaviour changed. I created a bunch of simple
+                plots instead of fancy dashboards and wrote down observations as I went. There was no “big model” at
+                the end — just a clearer understanding of what the data could and couldn’t tell me, which is something
+                I’ve learned to value more over time.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: STACKED PANELS -->
+        <div>
+          <!-- How I think about projects -->
+          <aside class="side-panel">
+            <div class="side-title">How I think about projects</div>
+
+            <p>
+              I don’t really chase perfect projects — I chase the ones that make me stop and think,
+              <strong>“Wait… what actually happens if I try this?”</strong> Most of my ideas start as small experiments,
+              turn into messy notebooks, and eventually grow into something that teaches me something real.
+            </p>
+
+            <ul style="margin:4px 0 0;padding-left:16px;">
+              <li>I like projects that make me debug my assumptions, not just my code.</li>
+              <li>If something confuses me, that usually means it’s worth building.</li>
+              <li>I learn more from weird failure cases than from neat accuracy charts.</li>
+              <li>A surprising number of breakthroughs come from changing one line and hoping for the best.</li>
+            </ul>
+
+            <p style="margin-top:6px;">
+              Some of my projects live in private repos for now while I clean them up, but I’m always happy to walk
+              through them if you reach out. My process isn’t fancy — it’s curiosity, small steps, and paying attention
+              to what breaks. And honestly, that’s the part I enjoy the most.
+            </p>
+          </aside>
+
+          <!-- Publications as a separate block -->
+          <section class="side-panel" style="margin-top:18px;">
+            <div class="side-title">Publications</div>
+          
+            <!-- Publication 1 -->
+            <div style="
+              background:#f1f5f9;
+              border:1px solid rgba(148,163,184,0.6);
+              border-radius:14px;
+              padding:10px 12px;
+              margin-bottom:10px;
+              font-size:12px;
+              line-height:1.45;
+              color:#374151;
+            ">
+              <strong>CICN 2021 —</strong>
+              Transfer Learning based Detection of Pneumonia from Chest X-Ray Images.  
+              <br>
+              <a href="https://ieeexplore.ieee.org/document/9574689" target="_blank"
+                style="color:#4f46e5; text-decoration:none; font-weight:500;">
+                🔗 View Paper
+              </a>
+            </div>
+          
+            <!-- Publication 2 -->
+            <div style="
+              background:#f1f5f9;
+              border:1px solid rgba(148,163,184,0.6);
+              border-radius:14px;
+              padding:10px 12px;
+              font-size:12px;
+              line-height:1.45;
+              color:#374151;
+            ">
+              <strong>IRJET 2020 —</strong>
+              Computer Vision based Sudoku Solving with Augmented Reality.  
+              <br>
+              <a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10253.pdf" target="_blank"
+                style="color:#4f46e5; text-decoration:none; font-weight:500;">
+                🔗 View Paper
+              </a>
+            </div>
+          </section>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+</body>
+</html>

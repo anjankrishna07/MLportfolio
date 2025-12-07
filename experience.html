@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anjan Krishna | Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #020617;
+      --text-main: #020617;
+      --text-muted: #6b7280;
+      --card: rgba(248,250,252,0.96);
+      --font-sans: "Inter", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at 0% 0%, #f97316 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #6366f1 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #ec4899 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #fefce8 0, #e0f2fe 40%, #f9fafb 100%);
+      padding: 24px 32px 28px;
+    }
+
+    .page-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .title-group h1 {
+      margin: 0;
+      font-size: 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .title-group p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(255,255,255,0.9);
+      padding: 7px 13px;
+      font-size: 13px;
+      text-decoration: none;
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.14s;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.12);
+    }
+
+    .nav-link.primary {
+      background: #111827;
+      color: #f9fafb;
+      border-color: #020617;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 20px rgba(51,65,85,0.28);
+      background: #eef2ff;
+      border-color: #6366f1;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .page { padding: 16px 14px 18px; }
+      main { grid-template-columns: 1fr; }
+    }
+
+    .intro-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 14px 16px;
+      border: 1px solid rgba(148,163,184,0.6);
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .intro-card strong { color: #111827; }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .exp-card {
+      border-radius: 18px;
+      padding: 12px 14px;
+      background: #f9fafb;
+      border: 1px solid rgba(148,163,184,0.7);
+      box-shadow: 0 12px 26px rgba(15,23,42,0.20);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .exp-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .exp-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .side-panel {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 12px;
+      color: var(--text-muted);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.18);
+      margin-bottom: 16px;
+    }
+
+    .side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="page-inner">
+
+      <header>
+        <div class="title-group">
+          <h1>💼 Experience</h1>
+          <p>Where I’ve learned to build, debug, and ship things with real users on the other side.</p>
+        </div>
+
+        <nav>
+          <a class="nav-link" href="index.html"><span class="icon">🏠</span> Home</a>
+          <a class="nav-link" href="education.html"><span class="icon">🎓</span> Education</a>
+          <a class="nav-link primary" href="experience.html"><span class="icon">💼</span> Experience</a>
+          <a class="nav-link" href="projects.html"><span class="icon">🚀</span> Projects</a>
+          <a class="nav-link" href="notes.html"><span class="icon">📝</span> Notes</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- LEFT COLUMN: EXPERIENCE STORIES -->
+        <div>
+          <div class="intro-card">
+            I like thinking about my career less as a list of job titles and more as a set of places where I learned
+            to handle ambiguity, own problems end-to-end, and work with people who think differently from me.
+            Below are a few of those stories.
+          </div>
+
+          <div class="experience-list">
+            <!-- Chayntech -->
+            <article class="exp-card">
+              <div class="exp-header">
+                <div class="exp-role">Machine Learning Engineer</div>
+                <div class="exp-meta">Chayntech · 20XX – Present · Los Angeles</div>
+              </div>
+              <div class="exp-company">Building an Enterprise Knowledge Assistant & visual search systems</div>
+              <div class="exp-body">
+                At Chayntech, I’ve spent most of my time building things that didn’t fully exist yet—at least not in a
+                usable form. When I first joined, the idea of an “Enterprise Knowledge Assistant” was more of a hope
+                than a product. Teams were drowning in internal PDFs, support tickets, logs, and documents, and the
+                tools they had either hallucinated or returned random results. So I started by trying to understand how
+                people actually searched for information, and that led me into designing an end-to-end RAG pipeline
+                from scratch—everything from hybrid structural + semantic chunking, embedding generation, and FAISS
+                retrieval tuning, to fine-tuning Llama-style models with domain-specific terminology to reduce
+                hallucinations. The more I worked on it, the clearer it became that people didn’t just want answers;
+                they wanted something that could think with them. That’s when I introduced an agentic reasoning layer
+                using tools like LangChain and CrewAI, which let the assistant break tasks down, compare documents,
+                synthesize information, and automate small workflows. Deploying it meant learning how to scale things
+                properly—containerizing GPU services, orchestrating them in the cloud, monitoring drift, and setting
+                guardrails so nothing quietly fell apart in the background. At one point the whole system started
+                returning irrelevant results right before a demo, and after some long nights debugging embedding drift
+                and reranking failures, I rebuilt the index pipeline with stricter versioning and drift detection so it
+                wouldn’t happen again. Not everything was about firefighting, though. When working on our multimodal
+                visual search system, I found myself mediating between teams who couldn’t agree on metadata strictness
+                versus experimentation speed, and walking them through how those choices affected our embedding space
+                helped us settle on a hybrid approach that everyone could live with. Another crunch moment came right
+                before a major traffic spike, when our visual search stack struggled under load and I had to rework GPU
+                batching and indexing so the system stayed responsive under pressure. Some of my favorite moments,
+                though, were quieter—like mentoring a junior teammate through FAISS and embeddings until they felt
+                confident enough to own parts of the pipeline themselves. Looking back, my experience at Chayntech has
+                been less about ticking boxes on a job description and more about learning how to bring clarity into
+                ambiguity, stay calm when things go sideways, and build systems that actually help people do their work.
+              </div>
+            </article>
+
+            <!-- SRM -->
+            <article class="exp-card">
+              <div class="exp-header">
+                <div class="exp-role">Undergraduate Researcher</div>
+                <div class="exp-meta">SRM University AP · 20XX – 20XX · India</div>
+              </div>
+              <div class="exp-company">Early work on medical imaging & transfer learning</div>
+              <div class="exp-body">
+                During my time at SRM University, my most memorable project started with a simple observation:
+                pneumonia diagnosis often depends on radiologists manually inspecting X-ray images, and even
+                experienced clinicians can disagree when cases get subtle. That curiosity turned into a research
+                project where I worked with a small team to see if deep learning could help flag obvious cases so
+                doctors could focus on the harder ones. We didn’t have huge compute or unlimited data, so we collected
+                and cleaned a public chest X-ray dataset and experimented with different transfer-learning setups using
+                models like VGG-16, VGG-19, and Inception-ResNet V2. A big chunk of my time went into surprisingly
+                unglamorous work—resizing images, handling inconsistent formats, building augmentation pipelines, and
+                making sure the train/validation splits weren’t leaking information. Over time, things started to
+                stabilize: VGG-19 consistently came out ahead, and we were able to reach strong accuracy and precision
+                on pneumonia detection without overfitting. There was no “magic moment” where everything just worked; it
+                was more like a long sequence of tweaks, failed runs, and small improvements. What made the project feel
+                real wasn’t just the paper we wrote, but a simple web app we built where someone could upload an X-ray
+                and get a model prediction, with a rule that anything below a confidence threshold would explicitly
+                recommend seeing a doctor instead of pretending to be sure. That project is where machine learning
+                stopped feeling like just an academic topic for me and started feeling like a tool I could actually use
+                to solve problems—messy data, imperfect models, uncertainty and all.
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: PANELS -->
+        <div>
+          <!-- How I like to work -->
+          <section class="side-panel">
+            <div class="side-title">How I like to work</div>
+            <p>
+              I’m happiest when I’m working somewhere in the space between “this is a vague idea” and
+              “this is a real system people can rely on.” I enjoy projects that force me to understand the problem
+              from the user’s point of view, not just the model’s point of view, and I like breaking work down into
+              small experiments rather than big, fragile plans.
+            </p>
+            <ul style="margin:4px 0 0;padding-left:16px;">
+              <li>I care a lot about clear problem statements before fancy architectures.</li>
+              <li>I like writing things down—assumptions, weird edge cases, failed ideas.</li>
+              <li>I try to keep feedback loops short so mistakes surface early.</li>
+              <li>I’m comfortable saying “I don’t know yet” and then going to find out.</li>
+            </ul>
+            <p style="margin-top:6px;">
+              Whether it’s ML systems, data pipelines, or experiments that might fail, I try to keep the process honest:
+              understand what’s actually happening, fix what’s broken, and keep things simple enough that future-me
+              won’t hate current-me.
+            </p>
+          </section>
+
+          <!-- Outside of work -->
+          <section class="side-panel">
+            <div class="side-title">Outside of work</div>
+            <p>
+              Outside of ML work, I’m a bit of a fitness geek. I enjoy training people, helping friends build
+              sustainable workout routines, and experimenting with my own programming and nutrition. Weekdays, you’ll
+              usually find me skimming through new papers on arXiv and bookmarking ideas that seem interesting; on
+              weekends, I like trying to reproduce results or run small experiments to see how things behave in
+              practice. It’s half curiosity, half a way to keep myself honest about what I actually understand.
+            </p>
+          </section>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</body>
+</html>

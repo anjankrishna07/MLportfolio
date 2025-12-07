@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anjan Krishna | Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #020617;
+      --text-main: #020617;
+      --text-muted: #6b7280;
+      --card: rgba(248,250,252,0.96);
+      --font-sans: "Inter", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at 0% 0%, #f97316 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #6366f1 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #ec4899 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #fefce8 0, #e0f2fe 40%, #f9fafb 100%);
+      padding: 24px 32px 28px;
+    }
+
+    .page-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .title-group h1 {
+      margin: 0;
+      font-size: 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .title-group p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(255,255,255,0.9);
+      padding: 7px 13px;
+      font-size: 13px;
+      text-decoration: none;
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.14s;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.12);
+    }
+
+    .nav-link.primary {
+      background: #111827;
+      color: #f9fafb;
+      border-color: #020617;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 20px rgba(51,65,85,0.28);
+      background: #eef2ff;
+      border-color: #6366f1;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .page { padding: 16px 14px 18px; }
+      main { grid-template-columns: 1fr; }
+    }
+
+    .intro-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 14px 16px;
+      border: 1px solid rgba(148,163,184,0.6);
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .intro-card strong { color: #111827; }
+
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .edu-card {
+      border-radius: 18px;
+      padding: 12px 14px;
+      background: #f9fafb;
+      border: 1px solid rgba(148,163,184,0.7);
+      box-shadow: 0 12px 26px rgba(15,23,42,0.20);
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .edu-degree {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .edu-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .edu-school {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .edu-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .side-panel {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 12px;
+      color: var(--text-muted);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.18);
+      margin-bottom: 16px;
+    }
+
+    .side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .timeline {
+      margin: 6px 0 0;
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="page-inner">
+
+      <header>
+        <div class="title-group">
+          <h1>🎓 Education</h1>
+          <p>How I went from circuits and signals to models, data, and systems.</p>
+        </div>
+
+        <nav>
+          <a class="nav-link" href="index.html"><span class="icon">🏠</span> Home</a>
+          <a class="nav-link primary" href="education.html"><span class="icon">🎓</span> Education</a>
+          <a class="nav-link" href="experience.html"><span class="icon">💼</span> Experience</a>
+          <a class="nav-link" href="projects.html"><span class="icon">🚀</span> Projects</a>
+          <a class="nav-link" href="notes.html"><span class="icon">📝</span> Notes</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- LEFT COLUMN: EDUCATION STORIES -->
+        <div>
+          <div class="intro-card">
+            I didn’t jump straight into machine learning. I started out in <strong>electronics and communication</strong>,
+            slowly got pulled into computer vision and deep learning, and eventually decided to study
+            <strong>data science</strong> more seriously. This page is the story behind that path.
+          </div>
+
+          <div class="edu-list">
+            <!-- MS: University at Buffalo -->
+            <article class="edu-card">
+              <div class="edu-header">
+                <div class="edu-degree">M.S. in Data Science</div>
+                <div class="edu-meta">University at Buffalo · 2022 – 2024</div>
+              </div>
+              <div class="edu-school">University at Buffalo, The State University of New York</div>
+              <div class="edu-body">
+                My time at Buffalo was where machine learning stopped being “a cool thing I tinker with” and became a
+                framework for how I think about problems. Coming in with an electronics background, I suddenly found
+                myself surrounded by probability theory, statistical learning, optimization, and a lot of assignments
+                that forced me to dive deeper than just using libraries. Courses in machine learning, data mining, and
+                large-scale data systems pushed me to understand why models behaved the way they did instead of just
+                memorizing which one “works better” on a benchmark. I spent a lot of evenings in labs and coffee shops
+                bouncing between Jupyter notebooks and research papers, trying to connect the math in lectures with the
+                messy datasets I was experimenting on. Group projects were a big part of the experience too — working
+                with classmates who had very different backgrounds meant learning how to explain ideas clearly, defend
+                design choices, and sometimes admit when a simpler approach was actually the right one. By the time I
+                graduated, I felt less like someone who “uses ML models” and more like someone who can reason about
+                trade-offs across modeling, data, and deployment, which shaped the kind of work I do now.
+              </div>
+            </article>
+
+            <!-- B.Tech: SRM University AP -->
+            <article class="edu-card">
+              <div class="edu-header">
+                <div class="edu-degree">B.Tech in Electronics and Communication Engineering</div>
+                <div class="edu-meta">SRM University AP · 2018 – 2022</div>
+              </div>
+              <div class="edu-school">SRM University AP, India</div>
+              <div class="edu-body">
+                SRM University AP is where everything really started. I enrolled in electronics and communication
+                engineering because I liked the idea of understanding how systems work end-to-end: from signals and
+                circuits all the way up to communication networks. In the beginning, most of my time was spent on core
+                ECE subjects — signal processing, digital logic, control systems — and learning how to think in terms
+                of constraints, noise, and trade-offs. Somewhere along the way, courses and small projects involving
+                image processing and pattern recognition caught my attention, and I realized I was spending more time
+                playing with Python and open-source frameworks than on anything else. That curiosity slowly turned into
+                proper research work, like our pneumonia detection project using chest X-rays, where I got my first real
+                taste of training models, handling imperfect data, and writing a paper. Looking back, my undergrad years
+                were less about specializing early and more about building a foundation: understanding how hardware,
+                signals, and software all connect, and discovering that I enjoyed the parts where math, code, and real
+                data all meet.
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: PANELS -->
+        <div>
+          <!-- How I learn -->
+          <section class="side-panel">
+            <div class="side-title">How I like to learn</div>
+            <p>
+              I learn best when there’s a mix of theory, code, and something slightly broken that I have to fix.
+              That’s true whether it’s an algorithms class, a deep learning course, or a random arXiv paper I’m
+              trying to reproduce.
+            </p>
+            <ul style="margin:4px 0 0;padding-left:16px;">
+              <li>I try to connect new ideas to projects as quickly as possible.</li>
+              <li>I keep a lot of small notebooks and experiments instead of one “perfect” project.</li>
+              <li>If I can’t explain a topic simply, I treat that as a sign I need to revisit it.</li>
+              <li>I like learning in public — sharing mistakes and small wins with others.</li>
+            </ul>
+            <p style="margin-top:6px;">
+              Both degrees taught me different things: SRM gave me a systems and hardware mindset; Buffalo gave me the
+              tools to analyze, model, and reason about data. Together, they shaped how I think about building ML
+              systems in the real world.
+            </p>
+          </section>
+
+          <!-- Tiny timeline -->
+          <section class="side-panel">
+            <div class="side-title">Timeline</div>
+            <ul class="timeline">
+              <li><strong>2018:</strong> Started B.Tech in ECE at SRM University AP.</li>
+              <li><strong>2019–2021:</strong> Got pulled into computer vision and deep learning projects.</li>
+              <li><strong>2022:</strong> Moved to the U.S. to start M.S. in Data Science at UB.</li>
+              <li><strong>2022–2024:</strong> Deepened my focus on ML, data, and pipelines.</li>
+              <li><strong>Now:</strong> Trying to combine both worlds — systems thinking + practical ML.</li>
+            </ul>
+          </section>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</body>
+</html>

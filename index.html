@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anjan Krishna | Machine Learning Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: rgba(248,250,252,0.95);
+      --accent-pink: #ec4899;
+      --accent-blue: #6366f1;
+      --accent-green: #22c55e;
+      --accent-yellow: #facc15;
+      --text-main: #020617;
+      --text-muted: #6b7280;
+      --radius-lg: 20px;
+      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* background fills the whole window */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at 0% 0%, #f97316 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #6366f1 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #ec4899 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+    }
+
+    /* main app surface also fills window, no big outer rounded card */
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #fefce8 0, #e0f2fe 40%, #f9fafb 100%);
+      border-radius: 0;
+      padding: 24px 32px 28px;
+      box-shadow: none;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(236,72,153,0.3), transparent 60%);
+      top: -80px;
+      right: -40px;
+      pointer-events: none;
+    }
+
+    .page-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header / nav */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      padding: 3px;
+      background: conic-gradient(from 180deg, #22c55e, #3b82f6, #ec4899, #f97316, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: avatarSpin 16s linear infinite;
+    }
+
+    @keyframes avatarSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 21px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #e5f2ff 50%, #f9fafb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 26px;
+      color: #0f172a;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.2);
+    }
+
+    .brand-text h1 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-text h1 span.emoji {
+      font-size: 22px;
+      display: inline-block;
+      transform-origin: 70% 70%;
+      animation: waveHand 1.5s ease-in-out infinite;
+    }
+
+    @keyframes waveHand {
+      0% { transform: rotate(0deg); }
+      15% { transform: rotate(18deg); }
+      30% { transform: rotate(-10deg); }
+      45% { transform: rotate(12deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .brand-text p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(255,255,255,0.9);
+      padding: 7px 13px;
+      font-size: 13px;
+      cursor: pointer;
+      color: #111827;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.12);
+      transition: transform 0.14s ease, box-shadow 0.18s ease, background 0.16s ease, border-color 0.16s ease;
+    }
+
+    .nav-link span.icon {
+      font-size: 14px;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 20px rgba(51,65,85,0.28);
+      background: #eef2ff;
+      border-color: #6366f1;
+    }
+
+    .nav-link.primary {
+      background: linear-gradient(135deg, #111827, #1f2937);
+      border-color: #020617;
+      color: #f9fafb;
+    }
+
+    .nav-link.primary:hover {
+      background: linear-gradient(135deg, #020617, #111827);
+    }
+
+    /* Layout */
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Hero section */
+    .hero-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      box-shadow: 0 16px 34px rgba(15,23,42,0.18);
+      border: 1px solid rgba(148,163,184,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(236,72,153,0.35), transparent 60%);
+      bottom: -80px;
+      right: -40px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(22,163,74,0.06);
+      border: 1px solid rgba(34,197,94,0.6);
+      color: #166534;
+      margin-bottom: 8px;
+    }
+
+    .hero-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-body strong {
+      color: #111827;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid rgba(129,140,248,0.7);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-cta {
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid transparent;
+      transition: 0.16s;
+    }
+
+    .hero-cta.primary {
+      background: linear-gradient(135deg, #4f46e5, #ec4899);
+      color: #f9fafb;
+      border-color: transparent;
+      box-shadow: 0 10px 24px rgba(79,70,229,0.5);
+    }
+
+    .hero-cta.primary:hover {
+      box-shadow: 0 16px 34px rgba(79,70,229,0.65);
+      transform: translateY(-1px);
+    }
+
+    .hero-cta.secondary {
+      background: rgba(255,255,255,0.75);
+      color: #111827;
+      border-color: rgba(148,163,184,0.7);
+    }
+
+    .hero-cta.secondary:hover {
+      background: #eef2ff;
+      border-color: #6366f1;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(51,65,85,0.25);
+    }
+
+    /* Feature cards */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 12px 13px 12px;
+      box-shadow: 0 14px 30px rgba(15,23,42,0.18);
+      border: 1px solid rgba(148,163,184,0.55);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-accent {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #111827;
+    }
+
+    .feature-accent.exp {
+      background: rgba(59,130,246,0.16);
+      border: 1px solid rgba(59,130,246,0.7);
+    }
+
+    .feature-accent.proj {
+      background: rgba(236,72,153,0.14);
+      border: 1px solid rgba(236,72,153,0.7);
+    }
+
+    .feature-accent.notes {
+      background: rgba(250,204,21,0.22);
+      border: 1px solid rgba(250,204,21,0.85);
+    }
+
+    .feature-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .feature-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .feature-chip {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4c1d95;
+      white-space: nowrap;
+    }
+
+    .feature-body {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    /* SKILLS SECTION */
+    .skills-section {
+      margin-top: 20px;
+      background: rgba(15,23,42,0.97);
+      border-radius: 20px;
+      padding: 12px 14px 14px;
+      box-shadow: 0 20px 48px rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.65);
+      color: #e5e7eb;
+      font-size: 12px;
+    }
+
+    .skills-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .skills-header-title {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skills-header-sub {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 540px) {
+      .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .skills-group {
+      background: rgba(15,23,42,0.96);
+      border-radius: 14px;
+      padding: 8px 9px;
+      border: 1px solid rgba(75,85,99,0.9);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.8);
+    }
+
+    .skills-group-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 5px;
+    }
+
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-pill {
+      border-radius: 999px;
+      padding: 3px 7px;
+      background: rgba(17,24,39,0.96);
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .skill-pill.highlight {
+      border-color: #6366f1;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .footer-link {
+      font-size: 11px;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.96);
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.7);
+      border: 1px solid rgba(75,85,99,0.9);
+      transition: 0.14s;
+    }
+
+    .footer-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.85);
+      background: #020617;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 16px 14px 18px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="page-inner">
+      <!-- HEADER -->
+      <header>
+        <div class="brand">
+          <div class="avatar">
+            <div class="avatar-inner">ANI</div>
+          </div>
+          <div class="brand-text">
+            <h1>
+              <span class="emoji">👋</span>
+              <span>Anjan Krishna</span>
+            </h1>
+            <p>Machine Learning Engineer · Data Scientist · Part Time Writer · Fitness Geek</p>
+          </div>
+        </div>
+
+        <nav>
+          <a class="nav-link primary" href="index.html">
+            <span class="icon">🏠</span> Home
+          </a>
+          <a class="nav-link" href="education.html">
+            <span class="icon">🎓</span> Education
+          </a>
+          <a class="nav-link" href="experience.html">
+            <span class="icon">💼</span> Experience
+          </a>
+          <a class="nav-link" href="projects.html">
+            <span class="icon">🚀</span> Projects
+          </a>
+          <a class="nav-link" href="notes.html">
+            <span class="icon">📝</span> Notes
+          </a>
+        </nav>
+      </header>
+
+      <!-- MAIN -->
+      <main>
+        <!-- LEFT: HERO -->
+        <section class="hero-card">
+          <div class="hero-title">I build ML systems that actually ship.</div>
+          <div class="hero-highlight">
+            <span>●</span>
+            <span>Currently: ML Engineer @ Chyantech (Los Angeles)</span>
+          </div>
+          <div class="hero-body">
+            I’m <strong>Anjan Krishna</strong>, a machine learning engineer originally from India and
+            now based in Los Angeles. I first fell in love with ML during my undergrad
+            at SRM University AP, where small computer-vision research projects pulled me deeper into
+            the world of deep learning. That passion carried through my Data Science master’s at
+            SUNY Buffalo, and eventually shaped my path into building practical,
+            production-ready ML systems.<br><br>
+            On weekdays during my free time you’ll usually find me reading the latest arXiv papers;
+            on weekends, I try to reproduce the results, benchmark models, and explore
+            ideas that catch my curiosity. Outside of work, I’m a fitness geek — I love training people, helping them
+            build healthier routines, and experimenting with my own programming and nutrition.
+          </div>
+
+          <div class="hero-tags">
+            <span class="hero-tag">PyTorch · TensorFlow</span>
+            <span class="hero-tag">Transformers · BERT · YOLO</span>
+            <span class="hero-tag">MLflow · Docker · Kubernetes</span>
+            <span class="hero-tag">Prometheus · Grafana</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <a class="hero-cta primary" href="projects.html">
+              <span>See featured projects</span> <span>🚀</span>
+            </a>
+            <a class="hero-cta secondary" href="mailto:krishnaub2@gmail.com">
+              <span>Get in touch</span> <span>✉️</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- RIGHT: SNAPSHOT CARDS -->
+        <div class="right-column">
+          <article class="feature-card">
+            <div class="feature-accent exp">💼</div>
+            <div class="feature-main">
+              <div class="feature-title-row">
+                <div class="feature-title">Production ML & MLOps</div>
+                <div class="feature-chip">Snapshot</div>
+              </div>
+              <div class="feature-body">
+                At Chyantech, I’ve improved model accuracy (~18%) and cut inference latency (~25%)
+                by tuning preprocessing pipelines, GPU usage, and monitoring for drift.
+                The full story lives on the <strong>Experience</strong> page.
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Education snapshot card -->
+          <article class="feature-card">
+            <div class="feature-accent exp">🎓</div>
+            <div class="feature-main">
+              <div class="feature-title-row">
+                <div class="feature-title">Education</div>
+                <div class="feature-chip">Background</div>
+              </div>
+              <div class="feature-body">
+                B.Tech in Electronics & Communication from SRM University AP, where I first got into ML.
+                Later, a Master’s in Data Science from the University at Buffalo, where I deepened my
+                understanding of modeling, systems, and real-world ML workflows.
+                <br><br>
+                Visit the <strong>Education</strong> page to read the full story.
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-accent proj">📊</div>
+            <div class="feature-main">
+              <div class="feature-title-row">
+                <div class="feature-title">Vision & NLP Projects</div>
+                <div class="feature-chip">Highlight</div>
+              </div>
+              <div class="feature-body">
+                Pneumonia detection from X-rays, toxic comment detection with BERT,
+                YOLO + SAM experiments, and more projects focused on practical, reproducible results.
+                See the <strong>Projects</strong> page for details and references.
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-accent notes">📝</div>
+            <div class="feature-main">
+              <div class="feature-title-row">
+                <div class="feature-title">Notes & tiny essays</div>
+                <div class="feature-chip">Writing</div>
+              </div>
+              <div class="feature-body">
+                I write short notes about MLOps, training pipelines, and learning in public.
+                Think of it as a lab notebook for my brain — the <strong>Notes</strong> page collects them.
+              </div>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <!-- SKILLS SECTION -->
+      <section class="skills-section">
+        <div class="skills-header">
+          <div class="skills-header-title">
+            🧠 Skills & tools
+          </div>
+          <div class="skills-header-sub">
+            Pulled from my current resume – what I use the most day-to-day.
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skills-group">
+            <div class="skills-group-title">Programming Languages</div>
+            <div class="skills-chips">
+              <span class="skill-pill highlight">Python</span>
+              <span class="skill-pill highlight">C++</span>
+              <span class="skill-pill">CUDA (kernel optimization)</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">ML Frameworks</div>
+            <div class="skills-chips">
+              <span class="skill-pill highlight">PyTorch</span>
+              <span class="skill-pill highlight">TensorFlow</span>
+              <span class="skill-pill">scikit-learn</span>
+              <span class="skill-pill">Hugging Face Transformers</span>
+              <span class="skill-pill">OpenCV</span>
+              <span class="skill-pill">BERT fine-tuning</span>
+              <span class="skill-pill">CNNs (VGG-19)</span>
+              <span class="skill-pill">YOLO</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Data Engineering</div>
+            <div class="skills-chips">
+              <span class="skill-pill">Pandas</span>
+              <span class="skill-pill">NumPy</span>
+              <span class="skill-pill">Spark</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill">Airflow</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">MLOps & Deployment</div>
+            <div class="skills-chips">
+              <span class="skill-pill highlight">MLflow</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">Kubernetes</span>
+              <span class="skill-pill">CI/CD (GitHub Actions)</span>
+              <span class="skill-pill">Model monitoring</span>
+              <span class="skill-pill">Reproducible pipelines</span>
+              <span class="skill-pill">Prometheus</span>
+              <span class="skill-pill">Grafana</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Cloud Platforms</div>
+            <div class="skills-chips">
+              <span class="skill-pill">AWS (SageMaker, EC2)</span>
+              <span class="skill-pill">GCP (Vertex AI)</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Core ML specialties</div>
+            <div class="skills-chips">
+              <span class="skill-pill">Model training</span>
+              <span class="skill-pill">Inference optimization</span>
+              <span class="skill-pill">Data preprocessing</span>
+              <span class="skill-pill">Feature engineering</span>
+              <span class="skill-pill">Drift detection</span>
+              <span class="skill-pill">GPU acceleration</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Domain experience</div>
+            <div class="skills-chips">
+              <span class="skill-pill">NLP (BERT, transformers)</span>
+              <span class="skill-pill">Computer Vision (CNNs, YOLO, SAM)</span>
+              <span class="skill-pill">Multimodal (CLIP, SigLIP)</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Additional tools</div>
+            <div class="skills-chips">
+              <span class="skill-pill">Hadoop</span>
+              <span class="skill-pill">Databricks</span>
+              <span class="skill-pill">Snowflake</span>
+              <span class="skill-pill">MATLAB</span>
+              <span class="skill-pill">R</span>
+              <span class="skill-pill">JAX</span>
+              <span class="skill-pill">LoRA / QLoRA</span>
+              <span class="skill-pill">RAG pipelines</span>
+              <span class="skill-pill">LLMs / vLLMs</span>
+              <span class="skill-pill">LangChain</span>
+              <span class="skill-pill">CrewAI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-section" style="margin-top:18px;">
+        <div class="skills-header">
+          <div class="skills-header-title">🏅 Achievements</div>
+          <div class="skills-header-sub">Highlights from my academic & professional journey</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+
+          <!-- Patent Achievement -->
+          <div class="skills-group" style="padding: 12px;">
+            <div class="skills-group-title" style="margin-bottom: 6px;">Patent</div>
+            <div style="font-size: 12px; color: #e5e7eb; line-height: 1.45;">
+              Co-inventor of a deep learning system for analyzing medical images to detect
+              infections with <strong>96%+ accuracy</strong>.
+            </div>
+          </div>
+
+          <!-- Award Achievement -->
+          <div class="skills-group" style="padding: 12px;">
+            <div class="skills-group-title" style="margin-bottom: 6px;">Award</div>
+            <div style="font-size: 12px; color: #e5e7eb; line-height: 1.45;">
+              Received the <strong>Research Excellence Medal</strong> from SRM University for contributions
+              to AI hardware and image processing on Research Day 2022.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <span>© <span id="year"></span> Anjan Krishna · Built with HTML, CSS, and curiosity.</span>
+        <div class="footer-links">
+          <a class="footer-link" href="mailto:krishnaub2@gmail.com">✉️ Email</a>
+          <a class="footer-link" href="https://github.com/anjankrishna07">💻 GitHub</a>
+          <a class="footer-link" href="https://www.linkedin.com/in/krishna-k-a6060436a/">🔗 LinkedIn</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
