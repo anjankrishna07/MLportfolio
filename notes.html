@@ -40,10 +40,29 @@
       width: 100%;
       min-height: 100vh;
       background: radial-gradient(circle at top left, #fefce8 0, #e0f2fe 40%, #f9fafb 100%);
+      border-radius: 0;
       padding: 24px 32px 28px;
+      border: none;
+      box-shadow: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(236,72,153,0.3), transparent 60%);
+      top: -80px;
+      right: -40px;
+      pointer-events: none;
     }
 
     .page-inner {
+      position: relative;
+      z-index: 1;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -60,6 +79,9 @@
     .title-group h1 {
       margin: 0;
       font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .title-group p {
@@ -82,12 +104,24 @@
       font-size: 13px;
       text-decoration: none;
       color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.12);
       transition: 0.14s;
     }
 
+    .nav-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 20px rgba(51,65,85,0.28);
+      background: #eef2ff;
+      border-color: #6366f1;
+    }
+
     .nav-link.primary {
-      background: #111827;
-      color: white;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      border-color: #020617;
+      color: #f9fafb;
     }
 
     main {
@@ -97,6 +131,71 @@
       border: 1px solid rgba(148,163,184,0.7);
       box-shadow: 0 18px 40px rgba(15,23,42,0.22);
       font-size: 13px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 180px;
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      padding: 7px 12px 7px 26px;
+      font-size: 12px;
+      outline: none;
+      background: #f9fafb;
+      box-shadow: 0 3px 8px rgba(15,23,42,0.15);
+    }
+
+    .search-wrap input:focus {
+      border-color: #6366f1;
+      box-shadow: 0 6px 16px rgba(79,70,229,0.35);
+    }
+
+    .search-wrap span.icon {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(255,255,255,0.9);
+      padding: 5px 9px;
+      font-size: 11px;
+      cursor: pointer;
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .filter-btn.active {
+      background: #fef3c7;
+      border-color: #facc15;
+      color: #92400e;
+      box-shadow: 0 3px 10px rgba(234,179,8,0.45);
     }
 
     .notes-list {
@@ -110,30 +209,122 @@
 
     .note-card {
       border-radius: 18px;
-      padding: 10px 12px;
+      padding: 9px 11px;
       background: #fefce8;
       border: 1px solid rgba(250,204,21,0.85);
       box-shadow: 0 10px 24px rgba(250,204,21,0.40);
       cursor: pointer;
-      transition: 0.12s ease;
+      transition: transform 0.12s ease, box-shadow 0.14s ease;
     }
 
     .note-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(250,204,21,0.55);
+    }
+
+    .note-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .note-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .note-preview {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .empty-state {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 12px;
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 1px dashed rgba(148,163,184,0.8);
+      text-align: center;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal {
+      max-width: 640px;
+      width: 100%;
+      background: #f9fafb;
+      border-radius: 22px;
+      border: 1px solid rgba(148,163,184,0.8);
+      box-shadow: 0 24px 50px rgba(15,23,42,0.7);
+      padding: 14px 16px 14px;
+      font-size: 13px;
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .modal-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .modal-close {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      background: #111827;
+      color: #f9fafb;
+      padding: 4px 9px;
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.5);
+      white-space: nowrap;
+    }
+
+    .modal-body {
+      margin-top: 6px;
+      color: var(--text-muted);
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 16px 14px 18px; }
+      header { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
     <div class="page-inner">
-
       <header>
         <div class="title-group">
           <h1>📝 Notes</h1>
-          <p>Short writing on ML, MLOps, and learning in public.</p>
+          <p>Short writing on ML, MLOps, LLMs, and learning in public.</p>
         </div>
-
         <nav>
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="education.html">Education</a>
@@ -144,51 +335,146 @@
       </header>
 
       <main>
+        <div class="controls">
+          <div class="search-wrap">
+            <span class="icon">🔍</span>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search by title or content..."
+            />
+          </div>
+          <div class="filter-tags">
+            <button class="filter-btn active" data-tag="all">All</button>
+            <button class="filter-btn" data-tag="mlops">MLOps</button>
+            <button class="filter-btn" data-tag="training">Training</button>
+            <button class="filter-btn" data-tag="llm">LLMs</button>
+            <button class="filter-btn" data-tag="data">Data</button>
+            <button class="filter-btn" data-tag="other">Other</button>
+          </div>
+        </div>
+
         <div class="notes-list" id="notesList"></div>
       </main>
+    </div>
+  </div>
 
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-meta" id="modalMeta"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">Close ✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
 
   <script>
     let notes = [];
+    let activeTag = "all";
+    let searchQuery = "";
+
+    const notesList   = document.getElementById("notesList");
+    const searchInput = document.getElementById("searchInput");
+    const filterBtns  = document.querySelectorAll(".filter-btn");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalTitle    = document.getElementById("modalTitle");
+    const modalMeta     = document.getElementById("modalMeta");
+    const modalBody     = document.getElementById("modalBody");
 
     async function loadNotes() {
       try {
-        const res = await fetch("notes.json");
+        const res = await fetch("notes.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
         notes = await res.json();
+        // optional: sort newest first
+        notes.sort((a, b) => new Date(b.date) - new Date(a.date));
         renderNotes();
       } catch (err) {
         console.error("Error loading notes.json:", err);
-        notesList.innerHTML = `<div class="empty-state">Could not load notes.</div>`;
+        notesList.innerHTML = '<div class="empty-state">Could not load notes: ' + err.message + "</div>";
       }
     }
 
+    function formatDate(iso) {
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
     function renderNotes() {
-      const list = document.getElementById("notesList");
-      list.innerHTML = "";
+      const q = searchQuery.trim().toLowerCase();
+      const filtered = notes.filter(note => {
+        const matchesTag = activeTag === "all" || note.tag === activeTag;
+        const inTitle   = note.title.toLowerCase().includes(q);
+        const inPreview = note.preview.toLowerCase().includes(q);
+        const inContent = note.content.toLowerCase().includes(q);
+        const matchesSearch = !q || inTitle || inPreview || inContent;
+        return matchesTag && matchesSearch;
+      });
 
-      notes.forEach(note => {
-        const div = document.createElement("div");
-        div.className = "note-card";
+      notesList.innerHTML = "";
 
-        div.innerHTML = `
-          <div style="font-size:15px; font-weight:600;">${note.title}</div>
-          <div style="font-size:11px; color:#6b7280;">${note.tag} · ${note.date}</div>
-          <div style="font-size:13px; color:#6b7280;">${note.preview}</div>
+      if (filtered.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.textContent = "No notes match this filter/search yet. Try changing the tag or clearing the search box.";
+        notesList.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach(note => {
+        const card = document.createElement("div");
+        card.className = "note-card";
+        card.innerHTML = `
+          <div class="note-title">${note.title}</div>
+          <div class="note-meta">${note.tag} · ${formatDate(note.date)}</div>
+          <div class="note-preview">${note.preview}</div>
         `;
-
-        div.onclick = () => openModal(note);
-        list.appendChild(div);
+        card.addEventListener("click", () => openModal(note));
+        notesList.appendChild(card);
       });
     }
 
     function openModal(note) {
-      alert(`${note.title}\n\n${note.content}`);
+      modalTitle.textContent = note.title;
+      modalMeta.textContent  = `${note.tag} · ${formatDate(note.date)}`;
+      modalBody.textContent  = note.content; // content uses \n, preserved by pre-wrap
+      modalBackdrop.style.display = "flex";
     }
+
+    function closeModal() {
+      modalBackdrop.style.display = "none";
+    }
+    window.closeModal = closeModal;
+
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      renderNotes();
+    });
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeTag = btn.dataset.tag;
+        renderNotes();
+      });
+    });
+
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
 
     loadNotes();
   </script>
-
 </body>
 </html>
